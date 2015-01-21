@@ -1,7 +1,7 @@
 <%= form_for(@homeitem) do |f| %>
   <% if @homeitem.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@homeitem.errors.count, "error") %> prohibited this homeitem from being saved:</h2>
+      <h2><%= pluralize(@homeitem.errors.count, "error") %> prohibited this item from being saved:</h2>
 
       <ul>
       <% @homeitem.errors.full_messages.each do |message| %>

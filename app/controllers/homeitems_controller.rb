@@ -70,7 +70,8 @@ class HomeitemsController < ApplicationController
       begin       
         @homeitem = Homeitem.find(params[:id])
       rescue ActiveRecord::RecordNotFound        
-        render status: :not_found
+        #render status: :not_found
+        redirect_to "/not_found.html"
       end
     end
 

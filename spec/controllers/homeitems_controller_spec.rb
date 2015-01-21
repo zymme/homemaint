@@ -51,6 +51,7 @@ RSpec.describe HomeitemsController, :type => :controller do
  
   
   describe "#create" do
+    context "when saving the homeitem" do
       subject { post :create, homeitem: { 
         name: 'Fix Master Bath', status: 'Pending', userid: 'zimmerd', desc: 'Fix drywall by shower door.' }
       }    
@@ -60,16 +61,16 @@ RSpec.describe HomeitemsController, :type => :controller do
         expect(Homeitem.all.count).to eq(1)
       end
       
-      it "should redirect to show the created homeitem" do
+      it "responds with a 302 http status" do
         subject
         expect(response.status).to eq(302)
       end
       
-      it "should redirect to actual homeitem created" do
+      it "redirects to the homeitem created" do
         expect(subject).to redirect_to(homeitem_path(Homeitem.first.id))
       end
-   
-  end
+    end  #context   
+  end  #describe #create
   
   describe "#show" do
     context "when the homeitem exists" do
@@ -90,9 +91,10 @@ RSpec.describe HomeitemsController, :type => :controller do
     context "when homeitem does not exist" do
       subject { get :show, id: 404 }
       
-      it "generates a 404" do
-        subject
-        expect(response.status).to eq(404)
+      it "is redirected to not_found.html page" do
+        # subject
+        #expect(response.status).to eq(404)
+        expect(subject).to redirect_to("/not_found.html")
       end 
       
     end #context
@@ -109,6 +111,24 @@ RSpec.describe HomeitemsController, :type => :controller do
         expect(Homeitem.all.count).to eq(0)
       end
     end  #context
+    
+    context "when homeitem does not exist" do
+      subject { post :destroy, id: 404 }
+      
+      it "is redirected to not_found.html page" do
+        subject
+        # expect(response.status).to be 404
+        expect(subject).to redirect_to("/not_found.html")
+      end
+    end  #context
+    
+    
+    
+    
+    
+    
+    
+    
   end
   
   

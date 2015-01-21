@@ -37,6 +37,7 @@ gem "activeadmin", github: 'activeadmin'
 
 gem 'formtastic'
 gem "rspec-rails",                 "~> 3.1"
+gem 'rspec-activemodel-mocks'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -49,4 +50,3 @@ gem "rspec-rails",                 "~> 3.1"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
