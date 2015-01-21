@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @homeitem.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @homeitem.status %>
+</p>
+
+<p>
+  <strong>Stagetime:</strong>
+  <%= @homeitem.stagetime %>
+</p>
+
+<p>
+  <strong>Userid:</strong>
+  <%= @homeitem.userid %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @homeitem.desc %>
+</p>
+
+<%= link_to 'Edit', edit_homeitem_path(@homeitem) %> |
+<%= link_to 'Back', homeitems_path %>

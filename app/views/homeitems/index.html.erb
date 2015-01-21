@@ -1,0 +1,33 @@
+<h1>Listing homeitems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Stagetime</th>
+      <th>Userid</th>
+      <th>Desc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @homeitems.each do |homeitem| %>
+      <tr>
+        <td><%= homeitem.name %></td>
+        <td><%= homeitem.status %></td>
+        <td><%= homeitem.stagetime %></td>
+        <td><%= homeitem.userid %></td>
+        <td><%= homeitem.desc %></td>
+        <td><%= link_to 'Show', homeitem %></td>
+        <td><%= link_to 'Edit', edit_homeitem_path(homeitem) %></td>
+        <td><%= link_to 'Destroy', homeitem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Homeitem', new_homeitem_path %>
