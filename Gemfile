@@ -38,6 +38,15 @@ gem "activeadmin", github: 'activeadmin'
 gem 'formtastic'
 gem "rspec-rails",                 "~> 3.1"
 gem 'rspec-activemodel-mocks'
+gem 'rspec-expectations'
+gem 'factory_girl_rails'
+gem 'thoughtbot-factory_girl'
+
+# gem 'thoughtbot-factory_girl', '~> 1.2.2'
+
+group :development do
+  gem 'guard'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
