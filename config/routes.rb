@@ -9,6 +9,14 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'homeitems#index'
 
+  get 'notes/test' => 'notes#testIns'
+
+  get 'homeitems/:id/merge' => 'homeitems#merge_test'
+
+  get 'compare' => 'homeitems#compare_runs'
+
+  resources :notes
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

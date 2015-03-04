@@ -39,13 +39,19 @@ gem 'formtastic'
 gem "rspec-rails",                 "~> 3.1"
 gem 'rspec-activemodel-mocks'
 gem 'rspec-expectations'
-gem 'factory_girl_rails'
-gem 'thoughtbot-factory_girl'
 
-# gem 'thoughtbot-factory_girl', '~> 1.2.2'
+gem 'mongo'
+gem 'bson_ext'
+gem 'mongo_mapper'
+
+gem 'uuidtools', '~> 2.1.5'
+
+gem 'nokogiri'
+
 
 group :development do
   gem 'guard'
+  gem 'factory_girl_rails'
 end
 
 # Use ActiveModel has_secure_password
