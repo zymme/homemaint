@@ -3,6 +3,8 @@ class Rctrun
 
   key :currentRunGuid, String
   key :previousRunGuid, String
+  key :policy_num, String
+  key :claim_num, String
 
   timestamps!
 

@@ -30,11 +30,14 @@ class HomeitemsController < ApplicationController
     render json: hitem, status: :ok
   end
 
+
+
   # GET /homeitems/compare
   def compare_runs
 
-    #pretend that current run guid has been retreived and previous run guid has been retrieved.
+    set_rct_run_policy(350)
 
+    #pretend that current run guid has been retreived and previous run guid has been retrieved.
     currentRunGuid = "504e3a52-0552-4dd5-96da-3152cd282457"
     previousRunGuid = "c5e412b9-f79d-43c9-94ba-d92a07db31ef"
 
@@ -47,13 +50,10 @@ class HomeitemsController < ApplicationController
       puts "Not equal run data"
     end
 
-    binding.pry
-
     currentRunHash = currentRun.attributes
     previousRunHash = previousRun.attributes
 
     hashme = Hash[ (previousRunHash.to_a | currentRunHash.to_a) - (previousRunHash.to_a & currentRunHash.to_a) ]
-
 
     builder = Nokogiri::XML::Builder.new { |xml|
 
@@ -62,7 +62,6 @@ class HomeitemsController < ApplicationController
           hashme.each { |node|
             xml.diff node.to_s
           }
-
         }
       }
     }
@@ -70,6 +69,39 @@ class HomeitemsController < ApplicationController
     puts builder.to_xml
 
     render json: { status: 'success' }, status: :ok
+
+  end
+
+  def set_rct_run_policy(policy_num)
+
+    binding.pry
+
+    # create guid for current run
+    curr_run_guid = UUIDTools::UUID.random_create
+
+    rctrun_pol = Rctrun.find_by_policy_num(policy_num.to_s)
+
+    #update previousRunGuid to currentRunGuid
+    #update currentRunGuid on document to one generated
+    if rctrun_pol
+      rctrun_pol.previousRunGuid = rctrun_pol.currentRunGuid
+      rctrun_pol.currentRunGuid = curr_run_guid
+
+      rctrun_pol.save!
+    else
+      #first run ever
+      rct_run = Rctrun.new
+      rct_run.currentRunGuid = curr_run_guid
+      rct_run.previousRunGuid = curr_run_guid
+      rct_run.policy_num = policy_num
+
+      rct_run.save!
+    end #end if
+
+  end # end def
+
+
+  def save_polrun_data
 
 
   end

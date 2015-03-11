@@ -12,10 +12,11 @@ class Hitem
   key :updated_at, Time
 
 
+  #use this as our POC for comparing objects
   def == (comparison_object)
 
     self.hitem_id == comparison_object.hitem_id || self.name == comparison_object.name ||
-    self.status == comparison_object.status 
+    self.status == comparison_object.status
 
   end
 

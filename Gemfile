@@ -48,6 +48,10 @@ gem 'uuidtools', '~> 2.1.5'
 
 gem 'nokogiri'
 
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails',
+                              :branch => '3.0.0'
+
 
 group :development do
   gem 'guard'
