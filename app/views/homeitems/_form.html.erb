@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <h4><span class="label label-default">Name</span></h4>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :status %><br>
+    <h4><%= f.label :status, class: "label label-default" %></h4>
     <%= f.text_field :status %>
   </div>
   <div class="field">
-    <%= f.label :stagetime %><br>
+    <h4><%= f.label :stagetime, class: "label label-default" %></h4>
     <%= f.datetime_select :stagetime %>
   </div>
   <div class="field">
-    <%= f.label :userid %><br>
+    <h4><%= f.label :user, class: "label label-default" %></h4>
     <%= f.text_field :userid %>
   </div>
   <div class="field">
-    <%= f.label :desc %><br>
-    <%= f.text_area :desc %>
+    <h4><%= f.label :desc, class: "label label-default" %></h4>
+    <%= f.text_area :desc, size: "85x5" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
